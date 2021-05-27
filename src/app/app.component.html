@@ -1,0 +1,26 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <p><b>Reactive Radio</b></p>
+  <div>
+    <input type="radio" formControlName="user_gender" value="Male">
+    <label class="form-check-label" for="genderMale">Male</label>
+  </div>
+  <div>
+    <input type="radio" formControlName="user_gender" value="Female">
+    <label class="form-check-label" for="genderFeMale">Female</label>
+  </div>
+
+  <p><b>Reactive Checkbox</b></p>
+  <ul formArrayName="fruits">
+    <li [formGroupName]="i" *ngFor="let item of form.controls?.fruits?.controls; let i = index">
+      <input type="checkbox" formControlName="checked" />  {{fruits[i].name}}
+    </li>
+  </ul>
+
+  <button type="submit" [disabled]="!form.valid" color="danger" expand="block">Submit</button>
+
+</form>
